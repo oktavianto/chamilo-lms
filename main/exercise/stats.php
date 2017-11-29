@@ -3,6 +3,12 @@
 
 require_once __DIR__.'/../inc/global.inc.php';
 
+// Access control
+api_protect_course_script(true);
+if (!api_is_allowed_to_edit()) {
+    api_not_allowed();
+}
+
 $this_section = SECTION_COURSES;
 
 $exercise_id = isset($_GET['exerciseId']) && !empty($_GET['exerciseId']) ? intval($_GET['exerciseId']) : 0;
